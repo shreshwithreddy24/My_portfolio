@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shreshwith Reddy — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12181B;
+    --paper:#F6F2E9;
+    --card:#FBF8F2;
+    --navy:#1B2A33;
+    --gold:#C79A3A;
+    --sage:#7C9885;
+    --line:#D8D0BE;
+    --muted:#6B655A;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:18px; padding-bottom:18px;
+  }
+  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em;}
+  .brand span{color:var(--gold);}
+  nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  nav a{text-decoration:none; font-size:0.92rem; color:var(--navy); border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s ease;}
+  nav a:hover{border-color:var(--gold);}
+  .nav-toggle{display:none;}
+
+  /* ---------- Hero: ID card ---------- */
+  .hero{
+    padding:64px 0 56px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  .kicker{
+    font-size:0.85rem;
+    color:var(--muted);
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    font-weight:600;
+    line-height:1.05;
+    color:var(--navy);
+  }
+  .hero .tagline{
+    margin-top:18px;
+    font-size:1.1rem;
+    max-width:46ch;
+    color:var(--ink);
+  }
+  .hero-actions{
+    margin-top:30px;
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:2px;
+    font-size:0.92rem;
+    text-decoration:none;
+    border:1px solid var(--navy);
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn-solid{background:var(--navy); color:var(--paper);}
+  .btn-solid:hover{background:var(--ink);}
+  .btn-outline{background:transparent; color:var(--navy);}
+  .btn-outline:hover{background:var(--navy); color:var(--paper);}
+
+  /* ID card visual */
+  .id-card{
+    background:var(--navy);
+    color:var(--paper);
+    border-radius:6px;
+    padding:26px;
+    position:relative;
+    box-shadow:8px 8px 0 var(--gold);
+  }
+  .id-card::before{
+    content:"STUDENT / FRESHER";
+    display:block;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    color:var(--sage);
+    margin-bottom:16px;
+  }
+  .id-row{display:flex; gap:16px; align-items:center;}
+  .id-photo{
+    width:64px; height:64px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--gold), var(--sage));
+    flex-shrink:0;
+  }
+  .id-name{font-family:'Fraunces', serif; font-size:1.3rem; font-weight:600;}
+  .id-role{font-size:0.85rem; color:var(--sage); margin-top:2px;}
+  .id-meta{
+    margin-top:22px;
+    border-top:1px solid rgba(246,242,233,0.18);
+    padding-top:18px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    font-size:0.82rem;
+  }
+  .id-meta div span{display:block; color:var(--sage); font-size:0.7rem; margin-bottom:3px;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:56px 0;}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px solid var(--line);
+    padding-bottom:14px;
+    margin-bottom:34px;
+  }
+  .section-head h2{font-size:1.7rem; color:var(--navy); font-weight:600;}
+  .section-no{font-size:0.85rem; color:var(--muted); font-variant-numeric:tabular-nums;}
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:48px;
+  }
+  .about-grid p{max-width:62ch; color:var(--ink);}
+  .fact-list{list-style:none; margin:0; padding:0; font-size:0.92rem;}
+  .fact-list li{
+    display:flex; justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    color:var(--muted);
+  }
+  .fact-list li b{color:var(--ink); font-weight:500;}
+
+  /* ---------- Skills: transcript rows ---------- */
+  .transcript{width:100%; border-collapse:collapse;}
+  .transcript th{
+    text-align:left;
+    font-size:0.78rem;
+    color:var(--muted);
+    font-weight:500;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+  .transcript td{
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  .skill-name{font-weight:500; color:var(--navy);}
+  .skill-note{color:var(--muted); font-size:0.88rem;}
+  .bar-track{
+    width:140px; height:6px; background:var(--line); border-radius:3px; overflow:hidden;
+  }
+  .bar-fill{height:100%; background:var(--gold);}
+
+  /* ---------- Projects ---------- */
+  .projects{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:26px;
+  }
+  .project-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:26px;
+    position:relative;
+  }
+  .project-tag{font-size:0.75rem; color:var(--sage); margin-bottom:10px;}
+  .project-card h3{font-size:1.15rem; color:var(--navy); font-weight:600;}
+  .project-card p{color:var(--muted); font-size:0.92rem; margin-top:10px;}
+  .project-links{margin-top:16px; display:flex; gap:16px; font-size:0.85rem;}
+  .project-links a{text-decoration:underline; text-underline-offset:3px;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:48px;
+  }
+  .contact-info p{color:var(--muted); max-width:40ch;}
+  .contact-links{list-style:none; padding:0; margin-top:24px;}
+  .contact-links li{padding:9px 0; border-bottom:1px dashed var(--line); font-size:0.92rem;}
+
+  form{display:flex; flex-direction:column; gap:16px;}
+  .field label{display:block; font-size:0.8rem; color:var(--muted); margin-bottom:6px;}
+  .field input, .field textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    background:var(--card);
+    font-family:'Work Sans', sans-serif;
+    font-size:0.95rem;
+    color:var(--ink);
+    border-radius:2px;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:2px solid var(--gold);
+    outline-offset:1px;
+  }
+  .field textarea{min-height:120px; resize:vertical;}
+  .form-status{font-size:0.85rem; min-height:1.2em;}
+  .form-status.ok{color:var(--sage);}
+  .form-status.err{color:#B3462C;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 0;
+    font-size:0.82rem;
+    color:var(--muted);
+    display:flex; justify-content:space-between;
+  }
+
+  @media (max-width:760px){
+    nav ul{display:none;}
+    .hero-grid, .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .projects{grid-template-columns:1fr;}
+    .id-card{box-shadow:5px 5px 0 var(--gold);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">Shreshwith <span>Reddy</span></div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Portfolio — Class of 2026</div>
+      <h1>Shreshwith Reddy</h1>
+      <p class="tagline">A fresher building a foundation across problem-solving, communication, and hands-on projects — looking for a first role where curiosity and consistent effort matter more than a finished resume.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-solid">Get in touch</a>
+        <a href="#projects" class="btn btn-outline">See projects</a>
+      </div>
+    </div>
+
+    <div class="id-card">
+      <div class="id-row">
+        <div class="id-photo"></div>
+        <div>
+          <div class="id-name">Shreshwith Reddy</div>
+          <div class="id-role">Fresher · Open to opportunities</div>
+        </div>
+      </div>
+      <div class="id-meta">
+        <div><span>Status</span>Actively learning</div>
+        <div><span>Based in</span>India</div>
+        <div><span>Focus</span>General / Multi-skill</div>
+        <div><span>Available</span>Immediately</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-head" style="border:none; padding:0; margin-bottom:18px;">
+        <h2 style="font-size:1.5rem;">About</h2>
+      </div>
+      <p>I'm just starting out — no long list of job titles yet, but a steady habit of picking things up quickly and finishing what I start. I work well in teams, adapt fast to new tools, and I'm looking for a place to turn that into real, applied experience.</p>
+      <p style="margin-top:14px;">Update this section with your actual education, interests, and what kind of role you're looking for — this is placeholder copy for you to personalise.</p>
+    </div>
+    <ul class="fact-list">
+      <li><span>Education</span> <b>Add your degree</b></li>
+      <li><span>Location</span> <b>Add your city</b></li>
+      <li><span>Languages</span> <b>English, Hindi</b></li>
+      <li><span>Looking for</span> <b>Internship / Entry role</b></li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <span class="section-no">Self-rated</span>
+    </div>
+    <table class="transcript">
+      <thead>
+        <tr><th>Skill</th><th>Note</th><th>Level</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="skill-name">Communication</td>
+          <td class="skill-note">Clear writing, comfortable presenting</td>
+          <td><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Problem Solving</td>
+          <td class="skill-note">Breaking down unfamiliar tasks</td>
+          <td><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></td>
+        </tr>
+        <tr>
+          <td class="skill-name">MS Office / Google Workspace</td>
+          <td class="skill-note">Docs, Sheets, Slides</td>
+          <td><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Teamwork</td>
+          <td class="skill-note">Group projects, coordination</td>
+          <td><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Adaptability</td>
+          <td class="skill-note">Picking up new tools fast</td>
+          <td><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></td>
+        </tr>
+        <tr>
+          <td class="skill-name">Basic Computer Skills</td>
+          <td class="skill-note">Internet, email, file handling</td>
+          <td><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px; font-size:0.85rem; color:var(--muted);">Swap these for your real skills — even one or two technical ones (a tool, a language, a certification) will make this section stronger.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="section-no">Selected work</span>
+    </div>
+    <div class="projects">
+      <div class="project-card">
+        <div class="project-tag">Web Development</div>
+        <h3>CineInfo</h3>
+        <p>A multi-page movie info and ticket-booking website — browse trending movies, view details, and book tickets. Built with HTML and CSS across separate home, movies, details, login, signup, and booking pages.</p>
+        <div class="project-links">
+          <a href="https://cineinfo-five.vercel.app/" target="_blank" rel="noopener">View</a>
+          <a href="#">Code</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-tag">Personal</div>
+        <h3>Project Two</h3>
+        <p>Same here — even a small self-taught project (a spreadsheet, a presentation, a mini website) counts as proof of work.</p>
+        <div class="project-links">
+          <a href="#">View</a>
+          <a href="#">Code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <div class="section-head" style="border:none; padding:0; margin-bottom:18px;">
+        <h2 style="font-size:1.5rem;">Contact</h2>
+      </div>
+      <p>Have a role, internship, or project in mind? Send a message directly — it goes straight to my inbox.</p>
+      <ul class="contact-links">
+        <li>Email — add-your-email@example.com</li>
+        <li>Phone — add your number</li>
+        <li>LinkedIn — add your profile link</li>
+      </ul>
+    </div>
+
+    <form id="contact-form">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="from_name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="from_email" required>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-solid" style="align-self:flex-start;">Send message</button>
+      <div class="form-status" id="form-status"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%;">
+    <span>© 2026 Shreshwith Reddy</span>
+    <span>Built with care</span>
+  </div>
+</footer>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  /* ========================================================
+     SETUP REQUIRED — do this once on emailjs.com:
+     1. Create a free account at https://www.emailjs.com
+     2. Add an Email Service (e.g. Gmail) -> copy its SERVICE ID
+     3. Create an Email Template with fields: from_name, from_email, message
+        -> copy its TEMPLATE ID
+     4. Go to Account -> General -> copy your PUBLIC KEY
+     5. Paste all three values below.
+     ======================================================== */
+  const SERVICE_ID  = "service_ek37cqi";
+  const TEMPLATE_ID = "template_vmgory4";
+  const PUBLIC_KEY  = "a49t-5i_-6dnh8UvYowlN";
+
+  emailjs.init({ publicKey: PUBLIC_KEY });
+
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    if (SERVICE_ID.startsWith("YOUR_") || TEMPLATE_ID.startsWith("YOUR_") || PUBLIC_KEY.startsWith("YOUR_")) {
+      status.textContent = "Form not connected yet — add your EmailJS Service ID, Template ID and Public Key in the code.";
+      status.className = "form-status err";
+      return;
+    }
+
+    status.textContent = "Sending...";
+    status.className = "form-status";
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form)
+      .then(() => {
+        status.textContent = "Message sent — thank you!";
+        status.className = "form-status ok";
+        form.reset();
+      })
+      .catch((err) => {
+        status.textContent = "Something went wrong. Please try again.";
+        status.className = "form-status err";
+        console.error(err);
+      });
+  });
+</script>
+
+</body>
+</html>
